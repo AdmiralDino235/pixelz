@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     
     @IBAction func didReceiveButtonPress(sender: UIButton) {
          print("didRecieveButtonPress \(sender.tag)")
+        sender.backgroundColor = UIColor.orangeColor()
     }
 
 	override func didReceiveMemoryWarning() {
