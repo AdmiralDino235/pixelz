@@ -54,6 +54,9 @@ class ViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "Orange", style: .Default, handler: { (action) in
 			sender.backgroundColor = UIColor.orangeColor()
 		}))
+		alert.addAction(UIAlertAction(title: "Red", style: .Default, handler: { (action) in
+			sender.backgroundColor = UIColor.redColor()
+		}))
 		alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
 		self.presentViewController(alert, animated: true) { }
     }
