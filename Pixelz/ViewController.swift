@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-	var currentColor = UIColor.blueColor()
-
+	var currentColor = UIColor.orangeColor()
+	let defaultColor = UIColor.whiteColor()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let buttonHeight = 64.0
@@ -22,7 +23,7 @@ class ViewController: UIViewController {
 		for row in 0..<numberOfRows {
 			for column in 0..<numberOfColumns {
 				let button = UIButton(frame: CGRect(x: Double(column) * buttonWidth, y: Double(row) * buttonHeight, width: buttonWidth, height: buttonHeight))
-				button.backgroundColor = self.currentColor
+				button.backgroundColor = self.defaultColor
                 button.tag = (column * 100) + row
 				button.setTitle("\(button.tag)", forState: UIControlState.Normal)
 				button.addTarget(self, action: #selector(didReceiveShortPressForButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
