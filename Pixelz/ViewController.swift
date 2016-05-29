@@ -54,12 +54,12 @@ class ViewController: UIViewController {
     @IBAction func didReceiveLongPressForButton(sender: UIButton) {
         print("didReceiveLongPressForButton \(sender.tag)")
         let alert = UIAlertController(title: "Color Picker", message: "Please pick a color", preferredStyle: UIAlertControllerStyle.Alert)
-		alert.addAction(UIAlertAction(title: "Orange", style: .Default, handler: { (action) in
-			self.currentColor = UIColor.orangeColor()
-			self.didReceiveShortPressForButton(sender)
-		}))
 		alert.addAction(UIAlertAction(title: "White", style: .Default, handler: { (action) in
 			self.currentColor = UIColor.whiteColor()
+			self.didReceiveShortPressForButton(sender)
+		}))
+		alert.addAction(UIAlertAction(title: "Orange", style: .Default, handler: { (action) in
+			self.currentColor = UIColor.orangeColor()
 			self.didReceiveShortPressForButton(sender)
 		}))
 		alert.addAction(UIAlertAction(title: "Yellow", style: .Default, handler: { (action) in
