@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 		let buttonWidth = 64.0
 		let numberOfRows = Int(floor(Double(view.bounds.height) / buttonHeight))
 		let numberOfColumns = Int(floor(Double(view.bounds.width) / buttonWidth))
+	
 		
 		for row in 0..<numberOfRows {
 			for column in 0..<numberOfColumns {
@@ -23,23 +24,38 @@ class ViewController: UIViewController {
 				button.backgroundColor = UIColor.blueColor()
                 button.tag = (column * 100) + row
 				button.setTitle("\(button.tag)", forState: UIControlState.Normal)
-                button.addTarget(self, action: #selector(ViewController.didReceiveShortPress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-//                button.addTarget(self, action: #selector(ViewController.didReceiveLongPress(_:)), forControlEvents: UIControlEvents.Long)
-
+				button.addTarget(self, action: #selector(didReceiveShortPressForButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+				let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didReceiveLongPress(_:)))
+				button.addGestureRecognizer(longPressGestureRecognizer)
+				
 				self.view.addSubview(button)
             }
 		}
 	}
-    
-    @IBAction func didReceiveShortPress(sender: UIButton) {
-         print("didReceiveShortPress \(sender.tag)")
-        sender.backgroundColor = UIColor.orangeColor()
+	
+	func didReceiveLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+		if gestureRecognizer.state == .Began {
+			print("didRecieveLongPress Began \(gestureRecognizer.view?.tag)")
+			if gestureRecognizer.view != nil && gestureRecognizer.view is UIButton {
+				didReceiveLongPressForButton(gestureRecognizer.view! as! UIButton)
+
+			}
+		}
+	}
+	
+    @IBAction func didReceiveShortPressForButton(sender: UIButton) {
+		print("didReceiveShortPressForButton \(sender.tag)")
+		sender.backgroundColor = UIColor.orangeColor()
     }
 
-    @IBAction func didReceiveLongPress(sender: UIButton) {
-        print("didReceiveLongPress \(sender.tag)")
+    @IBAction func didReceiveLongPressForButton(sender: UIButton) {
+        print("didReceiveLongPressForButton \(sender.tag)")
         let alert = UIAlertController(title: "Color Picker", message: "Please pick a color", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.showViewController(self, sender: self)
+		alert.addAction(UIAlertAction(title: "Orange", style: .Default, handler: { (action) in
+			sender.backgroundColor = UIColor.orangeColor()
+		}))
+		alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+		self.presentViewController(alert, animated: true) { }
     }
     
 	override func didReceiveMemoryWarning() {
