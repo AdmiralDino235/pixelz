@@ -58,6 +58,19 @@ class ViewController: UIViewController {
 			self.currentColor = UIColor.orangeColor()
 			self.didReceiveShortPressForButton(sender)
 		}))
+		alert.addAction(UIAlertAction(title: "White", style: .Default, handler: { (action) in
+			self.currentColor = UIColor.whiteColor()
+			self.didReceiveShortPressForButton(sender)
+		}))
+		alert.addAction(UIAlertAction(title: "Yellow", style: .Default, handler: { (action) in
+			self.currentColor = UIColor.yellowColor()
+			self.didReceiveShortPressForButton(sender)
+		}))
+		alert.addAction(UIAlertAction(title: "Black", style: .Default, handler: { (action) in
+			self.currentColor = UIColor.blackColor()
+			self.didReceiveShortPressForButton(sender)
+		}))
+		
 		alert.addAction(UIAlertAction(title: "Red", style: .Default, handler: { (action) in
 			self.currentColor = UIColor.redColor()
 			self.didReceiveShortPressForButton(sender)
