@@ -71,5 +71,33 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-
+	override func canBecomeFirstResponder() -> Bool {
+		return true
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		print("viewDidAppear")
+		self.becomeFirstResponder()
+	}
+	
+	func clearAll() {
+		print("clearAll")
+		for view in self.view.subviews {
+			if view is UIButton {
+				(view as! UIButton).backgroundColor = self.defaultColor
+			}
+		}
+	}
+	
+	override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+		print("motionEnded \(event)")
+		if motion == .MotionShake {
+			let alert = UIAlertController(title: "Confirmation", message: "Are you sure you want to clear?", preferredStyle: UIAlertControllerStyle.Alert)
+			alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action) in
+				self.clearAll()
+			}))
+			alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
+			self.presentViewController(alert, animated: true) { }
+		}
+	}
 }
