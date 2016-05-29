@@ -20,8 +20,8 @@ class ViewController: UIViewController {
 		let numberOfColumns = Int(floor(Double(view.bounds.width) / buttonWidth))
 	
 		
-		for row in 0..<numberOfRows {
-			for column in 0..<numberOfColumns {
+		for row in 0..<max(numberOfRows, numberOfColumns) {
+			for column in 0..<max(numberOfColumns, numberOfRows) {
 				let button = UIButton(frame: CGRect(x: Double(column) * buttonWidth, y: Double(row) * buttonHeight, width: buttonWidth, height: buttonHeight))
 				button.backgroundColor = self.defaultColor
 				button.layer.borderWidth = 1.0
