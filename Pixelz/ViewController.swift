@@ -23,18 +23,25 @@ class ViewController: UIViewController {
 				button.backgroundColor = UIColor.blueColor()
                 button.tag = (column * 100) + row
 				button.setTitle("\(button.tag)", forState: UIControlState.Normal)
-                button.addTarget(self, action: #selector(ViewController.didReceiveButtonPress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                button.addTarget(self, action: #selector(ViewController.didReceiveShortPress(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+//                button.addTarget(self, action: #selector(ViewController.didReceiveLongPress(_:)), forControlEvents: UIControlEvents.Long)
 
 				self.view.addSubview(button)
             }
 		}
 	}
     
-    @IBAction func didReceiveButtonPress(sender: UIButton) {
-         print("didRecieveButtonPress \(sender.tag)")
+    @IBAction func didReceiveShortPress(sender: UIButton) {
+         print("didReceiveShortPress \(sender.tag)")
         sender.backgroundColor = UIColor.orangeColor()
     }
 
+    @IBAction func didReceiveLongPress(sender: UIButton) {
+        print("didReceiveLongPress \(sender.tag)")
+        let alert = UIAlertController(title: "Color Picker", message: "Please pick a color", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.showViewController(self, sender: self)
+    }
+    
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
