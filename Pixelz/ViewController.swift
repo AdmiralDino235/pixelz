@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+	var currentColor = UIColor.blueColor()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
 		for row in 0..<numberOfRows {
 			for column in 0..<numberOfColumns {
 				let button = UIButton(frame: CGRect(x: Double(column) * buttonWidth, y: Double(row) * buttonHeight, width: buttonWidth, height: buttonHeight))
-				button.backgroundColor = UIColor.blueColor()
+				button.backgroundColor = self.currentColor
                 button.tag = (column * 100) + row
 				button.setTitle("\(button.tag)", forState: UIControlState.Normal)
 				button.addTarget(self, action: #selector(didReceiveShortPressForButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
@@ -45,17 +46,19 @@ class ViewController: UIViewController {
 	
     @IBAction func didReceiveShortPressForButton(sender: UIButton) {
 		print("didReceiveShortPressForButton \(sender.tag)")
-		sender.backgroundColor = UIColor.orangeColor()
+		sender.backgroundColor = self.currentColor
     }
 
     @IBAction func didReceiveLongPressForButton(sender: UIButton) {
         print("didReceiveLongPressForButton \(sender.tag)")
         let alert = UIAlertController(title: "Color Picker", message: "Please pick a color", preferredStyle: UIAlertControllerStyle.Alert)
 		alert.addAction(UIAlertAction(title: "Orange", style: .Default, handler: { (action) in
-			sender.backgroundColor = UIColor.orangeColor()
+			self.currentColor = UIColor.orangeColor()
+			self.didReceiveShortPressForButton(sender)
 		}))
 		alert.addAction(UIAlertAction(title: "Red", style: .Default, handler: { (action) in
-			sender.backgroundColor = UIColor.redColor()
+			self.currentColor = UIColor.redColor()
+			self.didReceiveShortPressForButton(sender)
 		}))
 		alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
 		self.presentViewController(alert, animated: true) { }
