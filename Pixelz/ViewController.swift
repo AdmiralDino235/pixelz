@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 				let button = UIButton(frame: CGRect(x: Double(column) * buttonWidth, y: Double(row) * buttonHeight, width: buttonWidth, height: buttonHeight))
 				button.backgroundColor = self.defaultColor
 				button.layer.borderWidth = 1.0
-				button.layer.borderColor = UIColor.blackColor().CGColor
+				button.layer.borderColor = UIColor.purpleColor().CGColor
                 button.tag = (column * 100) + row
 				button.addTarget(self, action: #selector(didReceiveShortPressForButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 				let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didReceiveLongPress(_:)))
