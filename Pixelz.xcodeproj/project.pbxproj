@@ -262,7 +262,7 @@
 				DEVELOPMENT_TEAM = VHZ4TCJF9T;
 				INFOPLIST_FILE = Pixelz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.rudolphs.Pixelz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.garyrudolph.Pixelz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -279,7 +279,7 @@
 				DEVELOPMENT_TEAM = VHZ4TCJF9T;
 				INFOPLIST_FILE = Pixelz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.rudolphs.Pixelz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.garyrudolph.Pixelz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
